@@ -1,0 +1,1 @@
+Goal of this project is to find optimal allocations between different stablecoin lendingpools.
