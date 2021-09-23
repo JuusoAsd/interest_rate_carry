@@ -51,6 +51,7 @@ def get_rari_fuse():
         print()
         get_fuse_pool(pool_list[nr])
 
+
 def get_fuse_pool(pool_info):
     print(pool_info[0])
     pool_address = pool_info[2]
@@ -59,14 +60,15 @@ def get_fuse_pool(pool_info):
     all_markets = pool_contract.functions.getAllMarkets().call()
     for market in all_markets:
         market_contract = get_market_contract(market)
-        symbol = market_contract.functions.symbol().call()
-    
-    
-        lend = market_contract.functions.supplyRatePerBlock().call()
-        borrow = market_contract.functions.borrowRatePerBlock().call()
-
-        print(symbol, round(annualized_return(lend), 2), round(annualized_return(borrow),2))
+        #get_rari_rate(market_contract)
+        print(market_contract.functions.interestRateModel().call())
         
+def get_rari_rate(contract):
+    symbol = contract.functions.symbol().call()
+    lend = contract.functions.supplyRatePerBlock().call()
+    borrow = contract.functions.borrowRatePerBlock().call()
+
+    print(symbol, round(annualized_return(lend), 2), round(annualized_return(borrow),2))
 
 
 def get_pool_contract(address):
