@@ -22,12 +22,12 @@ pip install -r requirements-dev.txt
 ```
 
 3. When adding new dependencies, add them to the requiremements file by freezing the pip:
-``` 
+```sh
 pip freeze > requirements.txt
 ```
 
 4. Create .env -file and add relevant api keys there:
-``` 
+```sh
 echo -e "infura=infura_api\netherscan=etherscan\n" >> .env
 ```
 
